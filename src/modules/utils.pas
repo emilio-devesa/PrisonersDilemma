@@ -10,7 +10,7 @@ module utils;
 export  utils = (
             ClearScreen,
             WaitForEnter,
-            StringToInteger,
+            StringToInteger
 );
 
 import  StandardInput;

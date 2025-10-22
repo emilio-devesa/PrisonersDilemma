@@ -6,6 +6,7 @@ program Main;
 
 import  StandardInput; StandardOutput;
         shared qualified;
+        utils qualified;
         player qualified;
         strategies qualified;
         game qualified;
@@ -14,7 +15,7 @@ var     Alice, Bob: player.tPlayer;
 
 procedure ShowHeader;
 begin
-    utils.ClearScreen;
+    writeln;
     writeln('-------------------------');
     writeln('  PRISONERS'' DILEMMA ');
     writeln('-------------------------');
