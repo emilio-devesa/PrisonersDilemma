@@ -71,14 +71,19 @@ end;
 procedure RunRounds(r: integer);
 var i: integer;
 begin
-    for i := 1 to r do game.PlayRound(Alice, Bob);
+    for i := 1 to r do game.PlayRound(Alice, Bob, i);
 end;
 
-procedure ShowResults(r: integer);
+procedure ShowResults(rounds: integer);
+var historyStr: string(255);
 begin
     writeln(Alice.Name, ' scored: ', Alice.Score:0);
     writeln(Bob.Name, ' scored: ', Bob.Score:0);
     writeln;
+    player.HistoryToString(Alice, rounds, historyStr);
+    writeln(Alice.Name, ': ', shared.TAB, historyStr);
+    player.HistoryToString(Bob, rounds, historyStr);
+    writeln(Bob.Name, ': ', shared.TAB, historyStr);
 end;
 
 function mainMenu: integer;

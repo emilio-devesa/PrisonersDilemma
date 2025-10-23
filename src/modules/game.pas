@@ -15,7 +15,7 @@ import  shared qualified;
         player qualified;
         strategies qualified;
 
-procedure PlayRound(var p1, p2: player.tPlayer);
+procedure PlayRound(var p1, p2: player.tPlayer; round: integer);
 
 end;
 
@@ -27,6 +27,8 @@ begin
     shared.GetPayoff(A1, A2, P1Points, P2Points);
     p1.Score := p1.Score + P1Points;
     p2.Score := p2.Score + P2Points;
+    p1.History[round] := A1;
+    p2.History[round] := A2;
 end;
 
 end.
