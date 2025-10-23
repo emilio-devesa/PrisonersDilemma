@@ -4,6 +4,7 @@ Thanks for your interest in contributing! Small guidelines:
 
 - Keep changes focused and small (one feature or fix per PR).
 - Follow the existing module layout (`modules/`): `shared`, `player`, `strategies`, `game`, `utils`.
+- If adding a new strategy, store the module inside `modules/strategies/`, update the selection function in `modules/strategies.pas` and update the enum in `shared.pas`.
 - Compile locally before opening a PR.
 
 Steps:

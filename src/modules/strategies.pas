@@ -3,7 +3,7 @@
     More info: README.md
     
     strategies.pas
-    Provides strategy decision functions
+    Provides strategy selection
 }
 module strategies;
 
@@ -13,6 +13,8 @@ export  strategies = (
 
 import  shared qualified;
         player qualified;
+        AlwaysCooperate qualified;
+        AlwaysDefect qualified;
 
 function DecideAction(p: player.tPlayer): shared.tAction;
 
@@ -21,8 +23,8 @@ end;
 function DecideAction;
 begin
     case p.Strategy of
-        shared.AlwaysCooperate: DecideAction := shared.Cooperate;
-        shared.AlwaysDefect:    DecideAction := shared.Defect;
+        shared.AlwaysCooperate: DecideAction := AlwaysCooperate.Decide(p);
+        shared.AlwaysDefect:    DecideAction := AlwaysDefect.Decide(p);
     end;
 end;
 
