@@ -30,19 +30,33 @@ begin
         writeln('Select strategy for ', playerName, ':');
         writeln('  1. Always Cooperate');
         writeln('  2. Always Defect');
+        writeln('  3. Friedman');
+        writeln('  4. Joss');
+        writeln('  5. Pavlov');
+        writeln('  6. Random');
+        writeln('  7. Tit for Tat');
+        writeln('  8. Tit for Two Tats');
+        writeln('  9. Generous Tit for Tat');
         writeln;
-        write('Strategy? (1-2): ');
+        write('Strategy? (1-9): ');
         readln(input);
         option := utils.StringToInteger(input, ok);
-        if ok and_then (option in [1..2]) then
+        if ok and_then (option in [1..9]) then
         begin
             case option of
                 1: PromptStrategy := shared.AlwaysCooperate;
                 2: PromptStrategy := shared.AlwaysDefect;
+                3: PromptStrategy := shared.Friedman;
+                4: PromptStrategy := shared.Joss;
+                5: PromptStrategy := shared.Pavlov;
+                6: PromptStrategy := shared.Random;
+                7: PromptStrategy := shared.TitForTat;
+                8: PromptStrategy := shared.TitForTwoTats;
+                9: PromptStrategy := shared.GenerousTitForTat;
             end;
         end
         else writeln('Invalid option');
-    until option in [1..5];
+    until option in [1..9];
 end;
 
 function PromptRounds: integer;
@@ -71,14 +85,19 @@ end;
 procedure RunRounds(r: integer);
 var i: integer;
 begin
-    for i := 1 to r do game.PlayRound(Alice, Bob);
+    for i := 1 to r do game.PlayRound(Alice, Bob, i);
 end;
 
-procedure ShowResults(r: integer);
+procedure ShowResults(rounds: integer);
+var historyStr: string(255);
 begin
     writeln(Alice.Name, ' scored: ', Alice.Score:0);
     writeln(Bob.Name, ' scored: ', Bob.Score:0);
     writeln;
+    player.HistoryToString(Alice, rounds, historyStr);
+    writeln(Alice.Name, ': ', shared.TAB, historyStr);
+    player.HistoryToString(Bob, rounds, historyStr);
+    writeln(Bob.Name, ': ', shared.TAB, historyStr);
 end;
 
 function mainMenu: integer;

@@ -1,6 +1,6 @@
 GPC=gpc
 
-UNIT_PATH=src/modules
+UNIT_PATH=src/modules:src/modules/strategies
 UNIT_DESTINATION=build/modules
 OBJECT_DESTINATION=build
 EXECUTABLE_PATH=bin
