@@ -10,7 +10,8 @@ module utils;
 export  utils = (
             ClearScreen,
             WaitForEnter,
-            StringToInteger
+            StringToInteger,
+            RandomInt
 );
 
 import  StandardInput;
@@ -19,6 +20,7 @@ import  StandardInput;
 procedure ClearScreen;
 procedure WaitForEnter;
 function StringToInteger(input: string; var ok: boolean): integer;
+function RandomInt(n: integer): integer;
 
 end;
 
@@ -63,6 +65,15 @@ begin
         StringToInteger := sign * val;
         ok := true;
     end;
+end;
+
+{ A simple random integer generator wrapper. Returns 0..n-1 }
+function RandomInt;
+var ts: TimeStamp; seed: integer;
+begin
+    GetTimeStamp (ts);
+    seed := (1103515245 * (ts.MicroSecond + ts.Second * 1000000) + 12345) mod 2147483648;
+    RandomInt := (seed) mod n;
 end;
 
 end.
