@@ -30,15 +30,21 @@ begin
         writeln('Select strategy for ', playerName, ':');
         writeln('  1. Always Cooperate');
         writeln('  2. Always Defect');
+        writeln('  3. Friedman');
+        writeln('  4. Tit for Tat');
+        writeln('  5. Tit for Two Tats');
         writeln;
-        write('Strategy? (1-2): ');
+        write('Strategy? (1-5): ');
         readln(input);
         option := utils.StringToInteger(input, ok);
-        if ok and_then (option in [1..2]) then
+        if ok and_then (option in [1..5]) then
         begin
             case option of
                 1: PromptStrategy := shared.AlwaysCooperate;
                 2: PromptStrategy := shared.AlwaysDefect;
+                3: PromptStrategy := shared.Friedman;
+                4: PromptStrategy := shared.TitForTat;
+                5: PromptStrategy := shared.TitForTwoTats;
             end;
         end
         else writeln('Invalid option');

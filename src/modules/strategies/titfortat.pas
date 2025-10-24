@@ -2,12 +2,12 @@
     Command Line program written in Pascal ISO 10206 (Extended Pascal)
     More info: README.md
     
-    alwayscooperate.pas
-    AlwaysCooperate: Always cooperate regardless of opponent and round
+    titfortat.pas
+    TitForTat: Cooperate on first round; otherwise copy opponent's previous action
 }
-module AlwaysCooperate;
+module TitForTat;
 
-export  AlwaysCooperate = (
+export  TitForTat = (
             Decide
 );
 
@@ -20,7 +20,10 @@ end;
 
 function Decide;
 begin
-    Decide := shared.Cooperate;
+    if round <= 1 then
+        Decide := shared.Cooperate
+    else
+        Decide := opp.History[round-1];
 end;
 
 end.
