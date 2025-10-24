@@ -16,6 +16,7 @@ import  shared qualified;
         AlwaysCooperate qualified;
         AlwaysDefect qualified;
         Friedman qualified;
+        Random qualified;
         TitForTat qualified;
         TitForTwoTats qualified;
 
@@ -29,6 +30,7 @@ begin
         shared.AlwaysCooperate: DecideAction := AlwaysCooperate.Decide(p, opponent, round);
         shared.AlwaysDefect:    DecideAction := AlwaysDefect.Decide(p, opponent, round);
         shared.Friedman:        DecideAction := Friedman.Decide(p, opponent, round);
+        shared.Random:          DecideAction := Random.Decide(p, opponent, round);
         shared.TitForTat:       DecideAction := TitForTat.Decide(p, opponent, round);
         shared.TitForTwoTats:   DecideAction := TitForTwoTats.Decide(p, opponent, round);
     end;

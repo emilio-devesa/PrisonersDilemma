@@ -31,24 +31,26 @@ begin
         writeln('  1. Always Cooperate');
         writeln('  2. Always Defect');
         writeln('  3. Friedman');
-        writeln('  4. Tit for Tat');
-        writeln('  5. Tit for Two Tats');
+        writeln('  4. Random');
+        writeln('  5. Tit for Tat');
+        writeln('  6. Tit for Two Tats');
         writeln;
         write('Strategy? (1-5): ');
         readln(input);
         option := utils.StringToInteger(input, ok);
-        if ok and_then (option in [1..5]) then
+        if ok and_then (option in [1..6]) then
         begin
             case option of
                 1: PromptStrategy := shared.AlwaysCooperate;
                 2: PromptStrategy := shared.AlwaysDefect;
                 3: PromptStrategy := shared.Friedman;
-                4: PromptStrategy := shared.TitForTat;
-                5: PromptStrategy := shared.TitForTwoTats;
+                4: PromptStrategy := shared.Random;
+                5: PromptStrategy := shared.TitForTat;
+                6: PromptStrategy := shared.TitForTwoTats;
             end;
         end
         else writeln('Invalid option');
-    until option in [1..5];
+    until option in [1..6];
 end;
 
 function PromptRounds: integer;

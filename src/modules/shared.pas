@@ -17,6 +17,7 @@ export  shared = (
             AlwaysCooperate,
             AlwaysDefect,
             Friedman,
+            Random,
             TitForTat,
             TitForTwoTats,
             GetPayoff
@@ -30,7 +31,7 @@ const   TAB = chr(9);
         PAYOFF_DD = 1;
 
 type    tAction = (Cooperate, Defect);
-        tStrategy = (AlwaysCooperate, AlwaysDefect, Friedman, TitForTat, TitForTwoTats);
+        tStrategy = (AlwaysCooperate, AlwaysDefect, Friedman, Random, TitForTat, TitForTwoTats);
 
 procedure GetPayoff(A1, A2: tAction; var P1Points, P2Points: integer);
 
