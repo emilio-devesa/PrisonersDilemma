@@ -10,6 +10,7 @@ import  StandardInput; StandardOutput;
         player qualified;
         strategies qualified;
         game qualified;
+        tournament qualified;
 
 var     Alice, Bob: player.tPlayer;
 
@@ -134,7 +135,12 @@ begin
                 ShowResults(rounds);
                 utils.WaitForEnter;
             end;
-        2:  ;       { Play Tournament - To be implemented }
+        2:  begin   { Play Tournament }
+                writeln;
+                rounds := PromptRounds;
+                tournament.RunTournament(rounds);
+                utils.WaitForEnter;
+            end;
         0:  ;       { Exit }
     end;
     start := option;
